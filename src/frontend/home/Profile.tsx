@@ -3,62 +3,62 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Avatar, AvatarImage } from '@/components/ui/avatar';
-import { getUserByClerkId } from '@/actions/UserInfo';
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 
 
-import { LinkIcon, MapPinIcon } from "lucide-react";
+// import { LinkIcon, MapPinIcon } from "lucide-react";
 import { Separator } from '@/components/ui/separator';
+import { getUserByClerkId } from '@/actions/userInfo';
 
 export default async function Profile() {
-	const authUser = await currentUser();
-	if (!authUser) {
-		console.log('User is not authenticated');
-	}
+  const authUser = await currentUser();
+  if (!authUser) {
+    console.log('User is not authenticated');
+  }
 
-	return <>{!authUser ? <Unauthenticated /> : <Authenticated />}</>;
+  return <>{!authUser ? <Unauthenticated /> : <Authenticated />}</>;
 }
 
 const Unauthenticated = () => {
-	return (
-		<div className='sticky '>
-			<Card>
-				<CardHeader>
-					<CardTitle className='text-center text-xl font-semibold'>
-						Welcome Back!
-					</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<p className='text-center text-muted-foreground mb-4'>
-						Login to access your profile and connect with others.
-					</p>
-					<SignInButton mode='modal'>
-						<Button
-							className='w-full'
-							variant='outline'>
-							Login
-						</Button>
-					</SignInButton>
-					<SignUpButton mode='modal'>
-						<Button
-							className='w-full mt-2'
-							variant='default'>
-							Sign Up
-						</Button>
-					</SignUpButton>
-				</CardContent>
-			</Card>
-		</div>
-	);
+  return (
+    <div className='sticky '>
+      <Card>
+        <CardHeader>
+          <CardTitle className='text-center text-xl font-semibold'>
+            Welcome Back!
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className='text-center text-muted-foreground mb-4'>
+            Login to access your profile and connect with others.
+          </p>
+          <SignInButton mode='modal'>
+            <Button
+              className='w-full'
+              variant='outline'>
+              Login
+            </Button>
+          </SignInButton>
+          <SignUpButton mode='modal'>
+            <Button
+              className='w-full mt-2'
+              variant='default'>
+              Sign Up
+            </Button>
+          </SignUpButton>
+        </CardContent>
+      </Card>
+    </div>
+  );
 };
 
 const Authenticated = async () =>{
   const { userId} = await auth();
   if (!userId) { }
-  const user = await getUserByClerkId(userId);
-	return (
-		<div>
-			<Card>
+  const user = await getUserByClerkId();
+  return (
+    <div>
+      <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col items-center text-center">
             <Link
@@ -113,6 +113,6 @@ const Authenticated = async () =>{
           </div>
         </CardContent>
       </Card>
-		</div>
-	)
+    </div>
+  )
 }

@@ -3,9 +3,9 @@ import { Work_Sans } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeProvider } from 'next-themes';
-import Navbar from './frontend/navbar/Navbar';
-import Profile from './frontend/home/Profile';
 import { Toaster } from 'sonner';
+import Navbar from '@/frontend/navbar/Navbar';
+import Profile from '@/frontend/home/Profile';
 
 const work_Sans = Work_Sans({
 	subsets: ['latin'],
