@@ -1,6 +1,7 @@
 import React from 'react'
 import CreatePost from '@/frontend/post/CreatePost'
 import { currentUser } from '@clerk/nextjs/server'
+import WhoToFollow from '@/frontend/WhoToFollow';
 
 export default async function Home() {
   const user = await currentUser();
@@ -11,8 +12,7 @@ export default async function Home() {
         { user ? <CreatePost/> : null }
       </div>
       <div className="hidden lg:block lg:col-span-4 sticky top-20">
-        {/* <WhoToFollow /> */}
-        WhoToFollow
+        <WhoToFollow />
       </div>
     </div>
   )
