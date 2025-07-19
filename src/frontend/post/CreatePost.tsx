@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 
 const Media = [
   { id: 1, label: 'Photo', icon: ImageIcon, color: 'text-blue-500' },
+  // in future lets add these --->
   // { id: 2, label: 'Video', icon: Video, color: 'text-red-500' },
   // { id: 3, label: 'Poll', icon: BarChart2, color: 'text-yellow-500' },
   // { id: 4, label: 'Schedule', icon: Calendar, color: 'text-green-500' },

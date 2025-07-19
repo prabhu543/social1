@@ -4,6 +4,7 @@ import prisma from '@/lib/prisma';
 import { getDbUserId } from './userInfo';
 import { revalidatePath } from 'next/cache';
 
+// to create a post 👇
 export async function createPost(content: string, image: string) {
 	try {
 		const userId = await getDbUserId();
@@ -26,6 +27,7 @@ export async function createPost(content: string, image: string) {
 	}
 }
 
+// to get all posts 👇
 export async function getPosts() {
 	try {
 		const posts = await prisma.post.findMany({
@@ -35,6 +37,7 @@ export async function getPosts() {
 			include: {
 				author: {
 					select: {
+						id : true,
 						name: true,
 						image: true,
 						username: true,
@@ -75,7 +78,7 @@ export async function getPosts() {
 	}
 }
 
-// Like toggle on a post
+// Like toggle on a post 👇
 export async function toggleLike(postId: string) {
 	try {
 		const userId = await getDbUserId();
@@ -142,7 +145,7 @@ export async function toggleLike(postId: string) {
 	}
 }
 
-// creation of comment on a post
+// creation of comment on a post 👇
 export async function createComment(postId: string, content: string) {
 	try {
 		const userId = await getDbUserId();
@@ -194,7 +197,7 @@ export async function createComment(postId: string, content: string) {
 	}
 }
 
-// delete post 
+// delete post  👇
 export async function deletePost(postId: string) {
 	try {
 		const userId = await getDbUserId();

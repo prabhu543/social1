@@ -4,6 +4,7 @@ import prisma from '@/lib/prisma';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { revalidatePath } from 'next/cache';
 
+// as per clerk getting user info from db 👇
 export async function getUserByClerkId() {
 	const user = await currentUser();
 	if (!user) {
@@ -24,6 +25,7 @@ export async function getUserByClerkId() {
 	});
 }
 
+// to get user id from database
 export async function getDbUserId() {
 	const { userId: clerkId } = await auth();
 	if (!clerkId) return null;
@@ -36,7 +38,7 @@ export async function getDbUserId() {
 	return user.id;
 }
 
-// for whomToFollow page
+// for whomToFollow page , random not followed follow recommendation 👇
 export async function getRandomUser() {
 	try {
 		const userId = await getDbUserId();
@@ -72,6 +74,7 @@ export async function getRandomUser() {
 	}
 }
 
+// toggle follow => follow / unfollow
 export async function toggleFollow(targetUserId: string) {
 	try {
 		const userId = await getDbUserId();

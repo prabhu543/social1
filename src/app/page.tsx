@@ -8,7 +8,8 @@ import { getDbUserId } from '@/actions/userInfo';
 
 export default async function Home() {
   const user = await currentUser();
-  if (!user) return;
+  // 👇 commented just for testing purpose only ----------------------- >
+  // if (!user) return; 
 
   const posts = await getPosts()
   const dbUserId = await getDbUserId();
@@ -16,13 +17,16 @@ export default async function Home() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
       <div className="lg:col-span-6">
+        {/* to create post by user  */}
         {user ? <CreatePost /> : null}
+        {/* to show posts  */}
         <div className='space-y-6'>
           {posts.map(post => (
             <PostCard key={post.id} post={post} dbUserId={dbUserId} />
           ))}
         </div>
       </div>
+      {/* to follow new people here , random recommendation =>  */}
       <div className="hidden lg:block lg:col-span-4 sticky top-20">
         <WhoToFollow />
       </div>

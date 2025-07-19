@@ -19,6 +19,7 @@ export default async function Profile() {
   return <>{!authUser ? <Unauthenticated /> : <Authenticated />}</>;
 }
 
+// if user is not log-in / sign-in / sign-up
 const Unauthenticated = () => {
   return (
     <div className='sticky '>
@@ -52,6 +53,7 @@ const Unauthenticated = () => {
   );
 };
 
+// if user is log-in / sign-in / sign-up 
 const Authenticated = async () =>{
   const { userId} = await auth();
   if (!userId) { }

@@ -1,3 +1,4 @@
+/*  shadCn css contents 👇*/
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -119,4 +120,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* simple and reusable css 👇*/
+Link , Button {
+  cursor : pointer;
 }

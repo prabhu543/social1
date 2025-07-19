@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import Toggle from './Toggle';
 import MenuBtn from '../sidebar/Menu';
 
-  function Navbar() {
+export default function Navbar() {
 
     
   return (
@@ -46,4 +46,3 @@ import MenuBtn from '../sidebar/Menu';
     </nav>
   );
 }
-export default Navbar;
