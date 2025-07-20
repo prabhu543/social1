@@ -71,7 +71,8 @@ const CreatePost = () => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               disabled={isPosting}
-            />
+          />
+          
           <div className="flex items-center justify-between border-t pt-4">
             <div className="flex space-x-2" >
               {Media.map(({id, label, icon: Icon, color }) => (
